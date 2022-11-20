@@ -1,4 +1,4 @@
-import NewNote, { links as newNoteStyles } from "~/components/newnote";
+import NewNote, { links as newNoteStyles } from "~/components/NewNote";
 
 const NotesPage = () => {
   return (
@@ -9,6 +9,8 @@ const NotesPage = () => {
 };
 
 export default NotesPage;
+
+export function action() {}
 
 export function links() {
   return [...newNoteStyles()];
