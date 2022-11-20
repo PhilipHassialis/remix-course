@@ -14,7 +14,7 @@ export default NotesPage;
 
 export async function action({ request }) {
   const formData = await request.formData();
-  const noteData = Object.entries(formData);
+  const noteData = Object.fromEntries(formData);
   // alternative to the above line:
   // const noteData = {
   //   title: formData.get("title"),
