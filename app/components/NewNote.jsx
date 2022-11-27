@@ -1,8 +1,9 @@
+import { Form } from "@remix-run/react";
 import styles from "./NewNote.css";
 
 const NewNote = () => {
   return (
-    <form method="post" id="note-form">
+    <Form method="post" id="note-form">
       <p>
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" required />
@@ -22,7 +23,7 @@ const NewNote = () => {
           <button>Add note</button>
         </div>
       </p>
-    </form>
+    </Form>
   );
 };
 
