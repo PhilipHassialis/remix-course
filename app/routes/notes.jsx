@@ -1,16 +1,20 @@
 import { redirect } from "@remix-run/node";
 import { getStoredNotes, storeNotes } from "data/notes";
-import NewNote, { links as newNoteStyles } from "~/components/NewNote";
+import NewNote, { links as newNoteLinks } from "~/components/NewNote";
+import NoteList, { links as noteListLinks } from "~/components/NoteList";
 
 const NotesPage = () => {
   return (
     <main>
       <NewNote />
+      <NoteList />
     </main>
   );
 };
 
 export default NotesPage;
+
+export function loader() {}
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -28,5 +32,5 @@ export async function action({ request }) {
 }
 
 export function links() {
-  return [...newNoteStyles()];
+  return [...newNoteLinks(), ...noteListLinks()];
 }
