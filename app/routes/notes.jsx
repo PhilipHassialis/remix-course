@@ -50,6 +50,13 @@ export async function action({ request }) {
   return redirect("/notes");
 }
 
+export function meta() {
+  return {
+    title: "Notes",
+    description: "A list of all notes",
+  };
+}
+
 export function CatchBoundary() {
   const caughtResponse = useCatch();
 

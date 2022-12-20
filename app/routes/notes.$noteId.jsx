@@ -33,6 +33,13 @@ export const loader = async ({ params }) => {
   return selectedNote;
 };
 
+export function meta({ data }) {
+  return {
+    title: data.title,
+    description: data.content,
+  };
+}
+
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
