@@ -8,6 +8,7 @@ const {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
 } = require("@remix-run/react");
 
 export const meta = () => ({
@@ -51,6 +52,35 @@ export function ErrorBoundary({ error }) {
         <main className="error">
           <h1>An error occured!</h1>
           <p>{error.message}</p>
+          <p>
+            Back to <Link to="/">safety</Link>
+          </p>
+        </main>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary() {
+  const caughtResponse = useCatch();
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+        <title>{caughtResponse.statusText}</title>
+      </head>
+      <body>
+        <header>
+          <MainNavigation />
+        </header>
+        <main className="error">
+          <h1>{caughtResponse.statusText}</h1>
+          <p>{caughtResponse.data?.message || "Something went wrong"}</p>
           <p>
             Back to <Link to="/">safety</Link>
           </p>
