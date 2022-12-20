@@ -1,3 +1,4 @@
+import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getStoredNotes } from "data/notes";
 import styles from "~/styles/note-details.css";
@@ -21,6 +22,14 @@ const NoteDetailsPage = () => {
 export const loader = async ({ params }) => {
   const notes = await getStoredNotes();
   const selectedNote = notes.find((note) => note.id === params.noteId);
+
+  if (!selectedNote) {
+    throw json(
+      { message: `Could not find note with id ${params.noteId}` },
+      { status: 404 }
+    );
+  }
+
   return selectedNote;
 };
 
